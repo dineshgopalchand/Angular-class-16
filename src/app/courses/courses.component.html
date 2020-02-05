@@ -3,3 +3,10 @@
     <!-- {{getTitleVal()}} -->
 </h1>
 <!-- {{2+2}} -->
+<div>
+    <ol>
+        <li *ngFor="let course of courseList">
+            {{course.name}} (ID: {{course.id}})
+        </li>
+    </ol>
+</div>
