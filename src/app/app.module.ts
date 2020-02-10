@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { CourseComponent } from './course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseService } from './services/course.service';
+import { DataEventComponent } from './data-event/data-event.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseComponent,
-    CoursesComponent
+    CoursesComponent,
+    DataEventComponent
   ],
   imports: [
     BrowserModule,

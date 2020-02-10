@@ -1,0 +1,30 @@
+<!-- <h3 style="text-align:center;">{{titleVal + ' !'}}</h3> -->
+<!-- <h3 style="text-align:center;" innerHTML="{{titleVal}}"></h3> -->
+<h3 style="text-align:center;" [innerHTML]="titleVal"></h3>
+<!-- <h3 style="text-align:center;" [innerText]="titleVal"></h3> -->
+<!-- <h3 style="text-align:center;" [textContent]="titleVal"></h3> -->
+<!-- <img src="{{imgSrc}}" alt="{{titleVal}}"> -->
+<!-- <img src="{{dummyImageSrc}}" alt="{{dummyImageSrc}}"> -->
+<!-- <img [src]="dummyImageSrc" [alt]="dummyImageSrc" [title]="'dummyImage'"> -->
+
+<!-- table>tr*3>td*4>lorem1 -->
+<table [title]="tableTitle">
+    <tr [attr.data-title]="'some title1'">
+        <!-- <td [attr.colspan]="'2'">Lorem.</td> -->
+        <td [attr.colspan]="colSpan">Lorem.</td>
+        <td>Deleniti.</td>
+        <td>Voluptatem.</td>
+    </tr>
+    <tr [attr.data-title]="'some title2'">
+        <td>Culpa?</td>
+        <td>Culpa?</td>
+        <td>Totam!</td>
+        <!-- <td [attr.rowspan]="'2'">Iure.</td> -->
+        <td [attr.rowspan]="rowSpan">Iure.</td>
+    </tr>
+    <tr [attr.data-title]="'some title3'">
+        <td>Quasi!</td>
+        <td>Repudiandae.</td>
+        <td>Temporibus.</td>
+    </tr>
+</table>
