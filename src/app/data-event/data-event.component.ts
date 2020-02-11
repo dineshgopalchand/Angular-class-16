@@ -25,5 +25,9 @@ export class DataEventComponent implements OnInit {
     // return this.title.toUpperCase();
     return this.title.toUpperCase().italics();
   }
+  getButtonDetails(event: MouseEvent) {
+    console.log('button clicked');
+    console.log((event.target as HTMLButtonElement).innerHTML);
+  }
 
 }
