@@ -13,9 +13,13 @@ export class DataEventComponent implements OnInit {
   tableTitle = 'Attribute binding sample';
   colSpan = 2;
   rowSpan = 2;
+  isActive = false;
   constructor() { }
 
   ngOnInit() {
+  }
+  changeStatus() {
+    this.isActive = !this.isActive;
   }
   get titleVal() {
     // return this.title.toUpperCase();

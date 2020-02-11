@@ -28,3 +28,21 @@
         <td>Temporibus.</td>
     </tr>
 </table>
+<div>
+    <!-- <button class="btn  m-2" [ngClass]="{
+        'btn-primary  some-other-class': !isActive,
+        'some-other-class1': !isActive,
+        'btn-danger': isActive
+    }">
+       {{
+           isActive?'Inactive':'Active'
+       }} 
+    </button> -->
+    <!-- <p class="p-2" [class.active]="isActive" [class.inactive]="!isActive">status : {{ isActive?'Active':'Inactive' }} </p> -->
+    <p class="p-2" [class.active]="isActive" [class.inactive]="!isActive" [style.fontWeight]="isActive?'bold':'normal'" [style.font-style]="isActive?'unset':'italic'">
+        status : {{ isActive?'Active':'Inactive' }}
+    </p>
+
+    <button class="btn btn-secondary" (click)="changeStatus()">Change Status ({{isActive}})</button>
+
+</div>
