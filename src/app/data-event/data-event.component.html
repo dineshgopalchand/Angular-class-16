@@ -55,9 +55,18 @@
 </div>
 
 <h3 class="mt-2">Get Title Form</h3>
-<div class="form-group">
+<!-- <div class="form-group">
     <input type="text" class="form-control" name="title" placeholder="Enter Title" (keyup)="titleFieldFunction($event)" [value]="titleInputValue">
 </div>
 <div class="form-group">
-    <button class="btn btn-primary">Submit</button> Value: {{titleInputValue}}
+    <button class="btn btn-primary">Submit</button> <span *ngIf="!submitted"> Value: {{titleInputValue}}</span>
+</div>
+<div class="mt-2" *ngIf="submitted">Submitted Value={{titleInputValue}}</div> -->
+
+<h4>Event Filtering with angular</h4>
+<div class="form-group">
+    <input type="text" class="form-control" name="title" placeholder="Enter Title" (keyup.enter)="getTitleValue(titleInput)" #titleInput [value]="titleInputValue">
+</div>
+<div class="form-group">
+    <button class="btn btn-primary" (click)="getTitleValue(titleInput)">Submit</button> <span> Value: {{titleInputValue}}</span>
 </div>

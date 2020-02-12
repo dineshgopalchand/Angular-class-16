@@ -15,6 +15,7 @@ export class DataEventComponent implements OnInit {
   rowSpan = 2;
   isActive = false;
   titleInputValue = '';
+  submitted = false;
   constructor() { }
 
   ngOnInit() {
@@ -30,14 +31,24 @@ export class DataEventComponent implements OnInit {
     console.log('button clicked');
     console.log((event.target as HTMLButtonElement).innerHTML);
   }
-  
+
   titleFieldFunction(event: KeyboardEvent) {
+    this.submitted = false;
     console.log(event);
+    this.titleInputValue = (event.target as HTMLInputElement).value;
 
     // example of event filtering
     if (event.keyCode === 13) {
-      this.titleInputValue = (event.target as HTMLInputElement).value;
+      this.submitted = true;
+      // this.titleInputValue = (event.target as HTMLInputElement).value;
     }
   }
 
+
+  // getTitleValue(event) {
+  getTitleValue(element: HTMLInputElement) {
+    // console.log(event);
+    // this.titleInputValue = (event.target as HTMLInputElement).value;
+    this.titleInputValue = element.value;
+  }
 }
