@@ -1,0 +1,6 @@
+<h2>One way and two ways binding</h2>
+<div class="form-group">
+    <!-- <input type="text" class="form-control" name="title" palceholder="enter title" [value]="inputValue" #titleInput (keyup)="getTitleValue(titleInput)"> -->
+    <input type="text" class="form-control" name="title" palceholder="enter title" [(ngModel)]="inputValue" #titleInput>
+</div>
+{{'Value: '+ inputValue}}

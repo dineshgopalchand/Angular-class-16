@@ -7,17 +7,21 @@ import { CourseComponent } from './course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseService } from './services/course.service';
 import { DataEventComponent } from './data-event/data-event.component';
+import { BindingComponent } from './binding/binding.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     CourseComponent,
     CoursesComponent,
-    DataEventComponent
+    DataEventComponent,
+    BindingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     CourseService
