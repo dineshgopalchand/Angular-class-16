@@ -9,6 +9,8 @@ import { CourseService } from './services/course.service';
 import { DataEventComponent } from './data-event/data-event.component';
 import { BindingComponent } from './binding/binding.component';
 import { FormsModule } from '@angular/forms';
+import { PipesComponent } from './pipes/pipes.component';
+import { KeyValuePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     CourseComponent,
     CoursesComponent,
     DataEventComponent,
-    BindingComponent
+    BindingComponent,
+    PipesComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,8 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   providers: [
-    CourseService
+    CourseService,
+    KeyValuePipe
   ],
   bootstrap: [AppComponent]
 })

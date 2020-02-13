@@ -1,0 +1,56 @@
+<div>
+    {{details | json}}
+</div>
+<!-- <div>
+    {{stringifyObject}}
+</div> -->
+<!-- <table>
+    <tr>
+        <td>Name</td>
+        <td>{{details.name}}</td>
+    </tr>
+    <tr>
+        <td>Current Date</td>
+        <td>{{details.currentDate}}</td>
+    </tr>
+</table> -->
+<!-- <table>
+    <tr *ngFor="let item of details | keyvalue">
+        <td>{{item.key }}</td>
+        <td>{{item.value}}</td>
+    </tr>
+</table> -->
+<div>
+    <ul>
+        <li>{{details.name}}</li>
+    </ul>
+</div>
+
+<div class="article">
+    <!-- <h2>{{details.postTitle | uppercase}}</h2> -->
+    <h2>{{details.postTitle | titlecase}}</h2>
+    <div>
+        {{details.description |lowercase}}
+    </div>
+    <div>{{details.numberOfStudent |number}}</div>
+    <div>{{details.numberOfStudent |number}}</div>
+    <div>{{details.rating |number:'2.1-2'}}</div>
+    <div>{{details.rating1 |number:'2.2-2'}}</div>
+    <div>{{details.rating2 |number:'2.2-2'}}</div>
+
+    <div>{{details.amount |currency:'USD'}}</div>
+    <div>{{details.amount |currency:'INR'}}</div>
+    <div>{{details.amount |currency:'DNK'}}</div>
+    <div>{{details.amount |currency:'EUR'}}</div>
+    <div>{{details.amount |currency:'AUD'}}</div>
+    <div>{{details.amount |currency:'DNS'}}</div>
+    <div>{{details.amount |currency:'AMIT'}}</div>
+    <div>{{details.amount |currency:currencyCode}}</div>
+
+    <div>{{details.currentDate | date}}</div>
+    <div>{{details.currentDate | date:'short'}}</div>
+    <div>{{details.currentDate | date:'long'}}</div>
+    <div>{{details.currentDate | date:'medium'}}</div>
+    <div>{{details.currentDate | date:'MM/yy'}}</div>
+
+</div>
