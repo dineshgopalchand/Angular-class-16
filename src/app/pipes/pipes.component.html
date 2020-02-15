@@ -44,13 +44,20 @@
     <div>{{details.amount |currency:'EUR'}}</div>
     <div>{{details.amount |currency:'AUD'}}</div>
     <div>{{details.amount |currency:'DNS'}}</div>
-    <div>{{details.amount |currency:'AMIT'}}</div>
+    <!-- <div>{{details.amount |currency:'AMIT'}}</div>
     <div>{{details.amount |currency:currencyCode}}</div>
 
     <div>{{details.currentDate | date}}</div>
     <div>{{details.currentDate | date:'short'}}</div>
     <div>{{details.currentDate | date:'long'}}</div>
     <div>{{details.currentDate | date:'medium'}}</div>
-    <div>{{details.currentDate | date:'MM/yy'}}</div>
+    <div>{{details.currentDate | date:'MM/yy'}}</div> -->
+
+
+    <h3>Custom Pipe</h3>
+    <div [innerHTML]="details.description | textFormating:{color:colorPattern}">
+        <!-- {{details.description | textFormating}} -->
+    </div>
+
 
 </div>

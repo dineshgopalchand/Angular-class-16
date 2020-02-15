@@ -19,6 +19,7 @@ export class PipesComponent implements OnInit {
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque obcaecati iusto voluptas atque fugiat neque quibusdam\
      exercitationem vel, ipsam et?'
   };
+  colorPattern = ['#333745', '#e63462', '#fe5f55', 'blue', 'green', 'red'];
   currencyCode = 'INR';
   // stringifyObject = '';
 

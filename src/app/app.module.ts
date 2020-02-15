@@ -11,6 +11,9 @@ import { BindingComponent } from './binding/binding.component';
 import { FormsModule } from '@angular/forms';
 import { PipesComponent } from './pipes/pipes.component';
 import { KeyValuePipe } from '@angular/common';
+import { CarouselComponent } from './carousel/carousel.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
 
 @NgModule({
   declarations: [
@@ -19,12 +22,15 @@ import { KeyValuePipe } from '@angular/common';
     CoursesComponent,
     DataEventComponent,
     BindingComponent,
-    PipesComponent
+    PipesComponent,
+    CarouselComponent,
+    TextFormatingPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [
     CourseService,
