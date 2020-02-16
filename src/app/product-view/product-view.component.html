@@ -1,0 +1,7 @@
+<div class="card" style="width: 18rem;">
+    <img [src]="productDetails.image" class="card-img-top" alt="product image">
+    <div class="card-body">
+        <div class="card-text" [innerHTML]="productDetails.description"></div>
+        <button class="btn btn-primary" (click)="addToCart()">Add to Cart</button>
+    </div>
+</div>

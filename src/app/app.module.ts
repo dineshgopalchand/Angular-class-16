@@ -14,6 +14,8 @@ import { KeyValuePipe } from '@angular/common';
 import { CarouselComponent } from './carousel/carousel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
+import { ProductViewComponent } from './product-view/product-view.component';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
     BindingComponent,
     PipesComponent,
     CarouselComponent,
-    TextFormatingPipe
+    TextFormatingPipe,
+    ProductViewComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,6 @@
+<h2 class="text-center">Product List</h2>
+<div class="flex-cotainer-wrap">
+    <div class="m-2" *ngFor="let product of products">
+        <app-product-view title="product view" [productDetails]="product" (addToCart)="addToCart($event)"></app-product-view>
+    </div>
+</div>

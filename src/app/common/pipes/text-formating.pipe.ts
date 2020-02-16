@@ -12,7 +12,11 @@ export class TextFormatingPipe implements PipeTransform {
   }
   transform(value: string, args: TextFormatPattern) {
     console.log('pipe args value', args);
-    const colorPattern = args ? args.color ? args.color : this.colorPattern : this.colorPattern;
+    // const colorPattern = args ? args.color ? args.color : this.colorPattern : this.colorPattern;
+    let colorPattern = this.colorPattern;
+    if (args && args.color) {
+      colorPattern = args.color;
+    }
     console.log(value);
     const valueArr = value.split(' ');
     const newVal = valueArr.map((ele: string) => {
