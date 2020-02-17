@@ -1,4 +1,8 @@
 <h2 class="text-center">Product List</h2>
+<div>
+    <h4>Added product</h4>
+    {{ cartService.cartProducts | json }}
+</div>
 <div class="flex-cotainer-wrap">
     <div class="m-2" *ngFor="let product of products">
         <app-product-view title="product view" [productDetails]="product" (addToCart)="addToCart($event)"></app-product-view>
