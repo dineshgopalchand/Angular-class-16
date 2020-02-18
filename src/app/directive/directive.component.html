@@ -1,1 +1,7 @@
-<p>directive works!</p>
+<h3 class="">Course details</h3>
+<div class="show-course" *ngIf="courseList.length!=0">
+    <h5>Course Name</h5>
+</div>
+<div class="show-course" *ngIf="courseList.length==0">
+    <p>No course available</p>
+</div>

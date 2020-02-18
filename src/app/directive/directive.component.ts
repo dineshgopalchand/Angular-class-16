@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-directive',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectiveComponent implements OnInit {
 
-  constructor() { }
+  courseList: any[] = [];
+  constructor(private courseService: CoursesService) { }
 
   ngOnInit() {
+    // this.courseList = this.courseService.courseList;
   }
 
 }
