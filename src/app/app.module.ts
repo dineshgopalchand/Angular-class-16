@@ -16,6 +16,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { BasicComponent } from './layout/basic/basic.component';
+import { HeaderComponent } from './common/header/header.component';
+import { DirectiveComponent } from './directive/directive.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { ProductListComponent } from './product-list/product-list.component';
     CarouselComponent,
     TextFormatingPipe,
     ProductViewComponent,
-    ProductListComponent
+    ProductListComponent,
+    BasicComponent,
+    HeaderComponent,
+    DirectiveComponent
   ],
   imports: [
     BrowserModule,

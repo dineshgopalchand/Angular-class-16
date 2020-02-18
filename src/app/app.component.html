@@ -12,9 +12,21 @@
     <!-- <app-binding></app-binding> -->
     <!-- <app-carousel></app-carousel> -->
     <!-- <app-pipes></app-pipes> -->
-    <app-product-list></app-product-list>
-    <h4>View Encapsulation test</h4>
+    <!-- <app-product-list></app-product-list> -->
+    <!-- <h4>View Encapsulation test</h4> -->
 </div>
+<theme-basic>
+    <ng-container class="header">
+        <app-header></app-header>
+    </ng-container>
+    <!-- <ng-container class="header">
+        <div *ngIf="showMessage">test</div>
+    </ng-container> -->
+    <ng-container class="body">
+        <!-- <app-product-list></app-product-list> -->
+        <app-directive></app-directive>
+    </ng-container>
+</theme-basic>
 
 
 
