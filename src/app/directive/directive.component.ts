@@ -9,6 +9,7 @@ import { CoursesService } from '../services/courses.service';
 export class DirectiveComponent implements OnInit {
 
   courseList: CourseType[] = [];
+  activeTab = 'course';
   constructor(private courseService: CoursesService) { }
 
   ngOnInit() {

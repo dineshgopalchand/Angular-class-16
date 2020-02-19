@@ -1,25 +1,62 @@
-<h3 class="">Course details</h3>
-<!-- <div class="show-course" *ngIf="courseList.length!=0">
-    <h5>Course Name</h5>
-</div>
-<div class="show-course" *ngIf="courseList.length==0">
-    <p>No course available</p>
-</div> -->
-<button class="btn btn-primary" (click)="switchCourseStatus()">Switch Course Satatus</button>
-<div class="show-course" *ngIf="courseList.length!=0;then showCourseList else noCourseList"></div>
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab=='course'" (click)="activeTab='course'" href="#">Course</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab=='map'" (click)="activeTab='map'" href="#">Map</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" [class.active]="activeTab=='about'" (click)="activeTab='about'" href="#">About</a>
+    </li>
+</ul>
 
-<ng-template #showCourseList>
-    <h5 class="d-flex">
-        Course Name
-        <button class="btn btn-primary ml-auto" (click)="addCourse()">Add course</button>
-    </h5>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item d-flex" [class.list-group-item-secondary]="o" [class.list-group-item-light]="!o" *ngFor="let course of this.courseList;index as i;first as f;last as l;odd as o;even as e">
-            {{i+1}}. {{course.name}} (ID:{{course.id}}) || {{'First:'+f}} || {{'Last:'+l}} || {{'Odd Position:'+o}} || {{'Even Position:'+e}}
-            <button class="btn btn-danger ml-auto" (click)="removeCourse(course)">Remove</button>
-        </li>
-    </ul>
-</ng-template>
-<ng-template #noCourseList>
-    <p>No course available</p>
-</ng-template>
+<div [ngSwitch]="activeTab">
+    <div *ngSwitchCase="'course'">
+
+        <h3 class="">Course details</h3>
+        <!-- <div class="show-course" *ngIf="courseList.length!=0">
+                <h5>Course Name</h5>
+            </div>
+            <div class="show-course" *ngIf="courseList.length==0">
+                <p>No course available</p>
+            </div> -->
+        <!-- <div class="show-course" [hidden]="courseList.length==0">
+                <h5>Course Name</h5>
+            </div>
+            <div class="show-course" [hidden]="courseList.length!=0">
+                <p>No course available</p>
+            </div> -->
+        <button class="btn btn-primary" (click)="switchCourseStatus()">Switch Course Status</button>
+        <div class="show-course" *ngIf="courseList.length!=0;then showCourseList else noCourseList"></div>
+
+        <ng-template #showCourseList>
+            <h5 class="d-flex">
+                Course Name
+                <button class="btn btn-primary ml-auto" (click)="addCourse()">Add course</button>
+            </h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex" [class.list-group-item-secondary]="o" [class.list-group-item-light]="!o" *ngFor="let course of this.courseList;index as i;first as f;last as l;odd as o;even as e">
+                    {{i+1}}. {{course.name}} (ID:{{course.id}}) || {{'First:'+f}} || {{'Last:'+l}} || {{'Odd Position:'+o}} || {{'Even Position:'+e}}
+                    <button class="btn btn-danger ml-auto" (click)="removeCourse(course)">Remove</button>
+                </li>
+            </ul>
+        </ng-template>
+        <ng-template #noCourseList>
+            <p>No course available</p>
+        </ng-template>
+    </div>
+    <div *ngSwitchCase="'map'">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.2324839678563!2d77.70145651482188!3d12.95697009086542!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13cd124e4dab%3A0xa6a6d1a400ac9903!2sSDLC%20Training!5e0!3m2!1sen!2sin!4v1582086155671!5m2!1sen!2sin"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+    </div>
+    <div *ngSwitchCase="'about'">
+
+        <p style="text-align: justify;">SDLC Training is an IT training institute that offers tailor-made courses to students and corporates who intend to hone their IT Skills. Our training portfolio covers programs that span across the Software Development Life Cycle, and hence the
+            name.
+        </p>
+        <p style="text-align: justify;">In the fast-moving IT industry, things become obsolete soon. So, we always keep ourselves abreast with the latest trends and technologies in the IT market. We ensure that we write off obsolete technologies and introduce the emerging trends from
+            time to time so that the people who undergo our training programs are equipped with the state of the art technology(s).</p>
+        <p style="text-align: justify;">The training sessions are conducted by Industry Experts who have vast IT industry experience in their respective fields and are employed with CMMI Level 5 / Multinational companies.</p>
+    </div>
+    <div *ngSwitchDefault>No View Selected</div>
+</div>
