@@ -1,4 +1,12 @@
 <div class="form-group" style="position:relative">
-    <input type="text" class="form-control" [appNameValidation] name="firstname" placeholder="Enter First Name">
+    <input type="text" class="form-control" autocomplete="off" [appNameValidation] name="firstname" placeholder="Enter First Name" (submitField)="submitValue($event)">
 </div>
-asdfasdkjfhasjkdhfjkhskjdfhjdsh
+
+
+<div class="m-2">
+    <ul class="list list-group">
+        <li class="list-group-item" *ngFor="let name of nameList">
+            {{name.value}}
+        </li>
+    </ul>
+</div>
