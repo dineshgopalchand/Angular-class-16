@@ -19,6 +19,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { BasicComponent } from './layout/basic/basic.component';
 import { HeaderComponent } from './common/header/header.component';
 import { DirectiveComponent } from './directive/directive.component';
+import { NameValidationDirective } from './common/directive/name-validation.directive';
+import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custom-directive.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DirectiveComponent } from './directive/directive.component';
     ProductListComponent,
     BasicComponent,
     HeaderComponent,
-    DirectiveComponent
+    DirectiveComponent,
+    NameValidationDirective,
+    ShowCustomDirectiveComponent
   ],
   imports: [
     BrowserModule,
