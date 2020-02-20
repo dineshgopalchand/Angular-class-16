@@ -35,8 +35,22 @@
                 <button class="btn btn-primary ml-auto" (click)="addCourse()">Add course</button>
             </h5>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex" [class.list-group-item-secondary]="o" [class.list-group-item-light]="!o" *ngFor="let course of this.courseList;index as i;first as f;last as l;odd as o;even as e">
+                <!-- <li class="list-group-item d-flex" [class.list-group-item-secondary]="o" [class.text-lowercase]="o" [class.text-uppercase]="e" [class.list-group-item-light]="!o" *ngFor="let course of this.courseList;index as i;first as f;last as l;odd as o;even as e">
                     {{i+1}}. {{course.name}} (ID:{{course.id}}) || {{'First:'+f}} || {{'Last:'+l}} || {{'Odd Position:'+o}} || {{'Even Position:'+e}}
+                    <button class="btn btn-danger ml-auto" (click)="removeCourse(course)">Remove</button>
+                </li> -->
+                <li class="list-group-item d-flex" [ngClass]="{
+                    'list-group-item-secondary': o,
+                    'text-lowercase': o,
+                    'text-uppercase': e,
+                    'list-group-item-light': !o,
+                    'list-group-item-secondary': o
+                }" *ngFor="let course of this.courseList;index as i;first as f;last as l;odd as o;even as e">
+                    <span [ngStyle]="{
+                        'background-color': o ? 'rgb(154, 230, 154)':'rgb(251, 153, 153)',
+                        'font-weight': e ? 'bold':'400',
+                        'width':'100px'
+                    }">{{i+1}}. {{course.name}}</span> (ID:{{course.id}}) || {{'First:'+f}} || {{'Last:'+l}} || {{'Odd Position:'+o}} || {{'Even Position:'+e}}
                     <button class="btn btn-danger ml-auto" (click)="removeCourse(course)">Remove</button>
                 </li>
             </ul>
