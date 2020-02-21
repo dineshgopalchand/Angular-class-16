@@ -1,17 +1,25 @@
 import { Directive, Input, ElementRef, HostListener, Renderer2, OnInit, Output, EventEmitter } from '@angular/core';
+import { LowerCasePipe, UpperCasePipe, TitleCasePipe } from '@angular/common';
 
 @Directive({
   selector: '[appNameValidation]',
 })
 export class NameValidationDirective implements OnInit {
   @Input() appNameValidation: string;
+  @Input() textCase: string;
   @Output() submitField = new EventEmitter();
   currentElement: HTMLInputElement;
   parentNode: HTMLElement;
   appendedElement: HTMLDivElement;
   inputVal = '';
 
-  constructor(private ele: ElementRef, private renderer: Renderer2) {
+  constructor(
+    private ele: ElementRef,
+    private renderer: Renderer2,
+    private lowerCase: LowerCasePipe,
+    private upperCase: UpperCasePipe,
+    private titleCase: TitleCasePipe
+  ) {
     // console.log(this.ele);
   }
   ngOnInit() {
@@ -21,8 +29,6 @@ export class NameValidationDirective implements OnInit {
     this.appendedElement = this.renderer.createElement('div');
   }
   @HostListener('keyup', ['$event']) onKeyup(event) {
-
-
     const styles = {
       position: 'absolute',
       width: '100%',
@@ -31,7 +37,18 @@ export class NameValidationDirective implements OnInit {
       'min-height': '35px',
       'z-index': 99
     };
-    this.inputVal = this.currentElement.value.trim().toUpperCase();
+    this.inputVal = this.currentElement.value.trim();
+    if (this.textCase === 'uppercase') {
+      // this.inputVal = this.inputVal.toUpperCase();
+      this.inputVal = this.upperCase.transform(this.inputVal);
+    } else
+      if (this.textCase === 'titlecase') {
+        // this.inputVal = this.inputVal.toUpperCase();
+        this.inputVal = this.titleCase.transform(this.inputVal);
+      } else {
+        // this.inputVal = this.inputVal.toLowerCase();
+        this.inputVal = this.lowerCase.transform(this.inputVal);
+      }
     if ((event as KeyboardEvent).keyCode === 13 && this.inputVal !== '') {
       this.returnUpdatedValue();
     }

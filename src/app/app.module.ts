@@ -10,7 +10,7 @@ import { DataEventComponent } from './data-event/data-event.component';
 import { BindingComponent } from './binding/binding.component';
 import { FormsModule } from '@angular/forms';
 import { PipesComponent } from './pipes/pipes.component';
-import { KeyValuePipe } from '@angular/common';
+import { KeyValuePipe, UpperCasePipe, LowerCasePipe, TitleCasePipe } from '@angular/common';
 import { CarouselComponent } from './carousel/carousel.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
@@ -48,7 +48,10 @@ import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custo
   ],
   providers: [
     CourseService,
-    KeyValuePipe
+    KeyValuePipe,
+    UpperCasePipe,
+    LowerCasePipe,
+    TitleCasePipe
   ],
   bootstrap: [AppComponent]
 })
