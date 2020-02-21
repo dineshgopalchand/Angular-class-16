@@ -21,6 +21,7 @@ import { HeaderComponent } from './common/header/header.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { NameValidationDirective } from './common/directive/name-validation.directive';
 import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custom-directive.component';
+import { ContactFormComponent } from './forms/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custo
     HeaderComponent,
     DirectiveComponent,
     NameValidationDirective,
-    ShowCustomDirectiveComponent
+    ShowCustomDirectiveComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,
