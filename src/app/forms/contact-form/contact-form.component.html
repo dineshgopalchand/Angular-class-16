@@ -1,7 +1,13 @@
 <div class="form-box">
-    <form (ngSubmit)="submitForm(cForm)" #cForm="ngForm">
+    <form (ngSubmit)="submitForm(cForm)" ngForm #cForm="ngForm">
         <div class="form-group">
-            <input type="text" class="form-control" #firstName="ngModel" required minlength="3" maxlength="20" ngModel name="firstname" pattern="^[a-zA-Z ]+$" placeholder="First Name" (keyup)="firstNameChange(firstName)">
+            <input type="text" class="form-control" #firstName="ngModel" required minlength="3" maxlength="20" ngModel name="firstname" pattern="^[a-zA-Z]+$" placeholder="First Name" (keyup)="firstNameChange(firstName)" autocomplete="false">
+        </div>
+
+        <div class="alert alert-danger" *ngIf="firstName.errors && firstName.touched">
+            <div *ngIf="firstName.errors.required">First Name is required</div>
+            <div *ngIf="firstName.errors.minlength">First Name length should be more then or equal to {{firstName.errors.minlength.requiredLength}} charecters</div>
+            <div *ngIf="firstName.errors.pattern">First Name is not valid</div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel name="lastname" placeholder="Last Name">
@@ -20,5 +26,3 @@
         </div>
     </form>
 </div>
-
-{{firstName.errors | json}}

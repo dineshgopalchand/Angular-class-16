@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -15,7 +16,8 @@ export class ContactFormComponent implements OnInit {
   submitForm(event) {
     console.log(event);
   }
-  firstNameChange(input) {
-    console.log(input);
+  firstNameChange(input: NgModel) {
+    console.log(input.control.setValue((input.value as string).toUpperCase()));
+    // console.log(input);
   }
 }
