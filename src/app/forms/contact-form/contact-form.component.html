@@ -1,28 +1,32 @@
 <div class="form-box">
     <form (ngSubmit)="submitForm(cForm)" ngForm #cForm="ngForm">
-        <div class="form-group">
-            <input type="text" class="form-control" #firstName="ngModel" required minlength="3" maxlength="20" ngModel name="firstname" pattern="^[a-zA-Z]+$" placeholder="First Name" (keyup)="firstNameChange(firstName)" autocomplete="false">
-        </div>
+        <div ngModelGroup="namefields" #nameFields="ngModelGroup">
+            <div class="form-group">
+                <input type="text" class="form-control" #firstName="ngModel" required minlength="3" maxlength="20" ngModel name="firstname" pattern="^[a-zA-Z]+$" placeholder="First Name" autocomplete="false">
+                <!-- (keyup)="firstNameChange(firstName)" -->
+            </div>
 
-        <div class="alert alert-danger" *ngIf="firstName.errors && firstName.touched">
-            <div *ngIf="firstName.errors.required">First Name is required</div>
-            <div *ngIf="firstName.errors.minlength">First Name length should be more then or equal to {{firstName.errors.minlength.requiredLength}} charecters</div>
-            <div *ngIf="firstName.errors.pattern">First Name is not valid</div>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" ngModel name="lastname" placeholder="Last Name">
+            <div class="alert alert-danger" *ngIf="firstName.errors && firstName.touched">
+                <div *ngIf="firstName.errors.required">First Name is required</div>
+                <div *ngIf="firstName.errors.minlength">First Name length should be more then or equal to {{firstName.errors.minlength.requiredLength}} charecters</div>
+                <div *ngIf="firstName.errors.pattern">First Name is not valid</div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" ngModel name="lastname" placeholder="Last Name">
+            </div>
         </div>
         <div class="form-group">
             <input type="text" class="form-control" ngModel name="contactno" placeholder="contact Number :+91 999 999 9999">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="email" placeholder="Email ID">
+            <input type="text" class="form-control" name="email" ngModel placeholder="Email ID">
         </div>
         <div class="form-group">
-            <textarea type="text" class="form-control" name="comment" placeholder="Enter you comment"></textarea>
+            <textarea type="text" class="form-control" ngModel name="comment" placeholder="Enter you comment"></textarea>
         </div>
         <div class="mt-2 mb-2">
-            <button class="btn btn-primary form-control" type="submit">Submit</button>
+            <button [disabled]="cForm.invalid" class="btn btn-primary form-control" type="submit">Submit</button>
         </div>
     </form>
 </div>
+<!-- {{cForm.errors | json}} {{cForm.valid | json}} -->

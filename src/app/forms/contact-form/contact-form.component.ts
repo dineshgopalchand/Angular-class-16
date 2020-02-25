@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgModel } from '@angular/forms';
+import { NgForm, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,8 +13,9 @@ export class ContactFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  submitForm(event) {
-    console.log(event);
+  submitForm(form: NgForm) {
+    console.log(form.value);
+    // call form submit API
   }
   firstNameChange(input: NgModel) {
     console.log(input.control.setValue((input.value as string).toUpperCase()));
