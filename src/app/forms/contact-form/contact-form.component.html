@@ -30,9 +30,32 @@
                 subscribe to mail list
             </label>
         </div>
+        <div class="form-group">
+            <label for="mailingoption">Choose the mailing option</label>
+            <!-- <select name="mailingoption" class="form-control" ngModel>
+                <option [value]="item.value" *ngFor="let item of mailingList">{{item.name}}</option>
+            </select> -->
+            <!-- <select name="mailingoption" class="form-control" ngModel multiple>
+                <option [value]="item.value" *ngFor="let item of mailingList">{{item.name}}</option>
+            </select> -->
+            <select name="mailingoption" class="form-control" [(ngModel)]="selectedValue" multiple>
+                <option [value]="item.value" *ngFor="let item of mailingList">{{item.name}}</option>
+            </select>
+            <!-- <select name="mailingoption" class="form-control" [(ngModel)]="selectedValue">
+                <option [value]="item.value" *ngFor="let item of mailingList">{{item.name}}</option>
+            </select> -->
+        </div>
+        <div class="radio">
+            <div *ngFor="let item of mailingList">
+                <label for="mailinglist">
+                    <input type="radio" [value]="item.value" ngModel name="mailinglist">{{item.name}}
+                </label>
+            </div>
+
+        </div>
         <div class="mt-2 mb-2">
             <button [disabled]="cForm.invalid" class="btn btn-primary form-control" type="submit">Submit</button>
         </div>
     </form>
 </div>
-<!-- {{cForm.errors | json}} {{cForm.valid | json}} -->
+{{cForm.value | json}}
