@@ -2,3 +2,11 @@
     width: 600px;
     margin: auto;
 }
+
+.form-control.ng-invalid.ng-touched {
+    outline: 1px solid #ee4545;
+}
+
+.color-red {
+    color: red;
+}
