@@ -24,6 +24,12 @@
         <div class="form-group">
             <textarea type="text" class="form-control" ngModel name="comment" placeholder="Enter you comment"></textarea>
         </div>
+        <div class="checkbox">
+            <label for="subscription">
+                <input type="checkbox" required ngModel name="subscription">
+                subscribe to mail list
+            </label>
+        </div>
         <div class="mt-2 mb-2">
             <button [disabled]="cForm.invalid" class="btn btn-primary form-control" type="submit">Submit</button>
         </div>
