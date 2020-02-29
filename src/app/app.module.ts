@@ -8,7 +8,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseService } from './services/course.service';
 import { DataEventComponent } from './data-event/data-event.component';
 import { BindingComponent } from './binding/binding.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesComponent } from './pipes/pipes.component';
 import { KeyValuePipe, UpperCasePipe, LowerCasePipe, TitleCasePipe } from '@angular/common';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -22,6 +22,7 @@ import { DirectiveComponent } from './directive/directive.component';
 import { NameValidationDirective } from './common/directive/name-validation.directive';
 import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custom-directive.component';
 import { ContactFormComponent } from './forms/contact-form/contact-form.component';
+import { SignUpComponent } from './forms/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,14 @@ import { ContactFormComponent } from './forms/contact-form/contact-form.componen
     DirectiveComponent,
     NameValidationDirective,
     ShowCustomDirectiveComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule
   ],
   providers: [
