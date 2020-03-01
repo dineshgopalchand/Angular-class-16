@@ -19,15 +19,24 @@ export class SignUpComponent implements OnInit {
         Validators.maxLength(20),
         Validators.pattern(/^[0-9a-zA-Z]+$/)
       ]),
-      password: new FormControl('')
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+      ])
     });
     console.log(this.signUp);
+
+    // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    // var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
   }
   signupSubmit() {
     console.log(this.signUp.value);
   }
   get userName() {
     return this.signUp.get('username');
+  }
+  get passWord() {
+    return this.signUp.get('password');
   }
 
 }
