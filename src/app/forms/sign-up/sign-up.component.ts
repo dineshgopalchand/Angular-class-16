@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
+import { PasswordValidator } from 'src/app/common/validators/password.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,6 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class SignUpComponent implements OnInit {
   signUp: FormGroup;
+  passwordVal = '';
 
   constructor() { }
 
@@ -21,10 +23,20 @@ export class SignUpComponent implements OnInit {
       ]),
       password: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+        // Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/),
+        PasswordValidator.passwordStrength
+      ]),
+      confirmpassword: new FormControl('', [
+        Validators.required
       ])
+    }, {
+      validators: PasswordValidator.passwordCheck('password', 'confirmpassword')
     });
     console.log(this.signUp);
+    this.passWord.valueChanges.subscribe(passwordVal => {
+      console.log(passwordVal);
+      this.passwordVal = passwordVal;
+    });
 
     // var strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     // var mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
@@ -37,6 +49,9 @@ export class SignUpComponent implements OnInit {
   }
   get passWord() {
     return this.signUp.get('password');
+  }
+  get confirmPassword() {
+    return this.signUp.get('confirmpassword');
   }
 
 }
