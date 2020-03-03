@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { PasswordValidator } from 'src/app/common/validators/password.validator';
+import { UsernameValidator } from 'src/app/common/validators/username.validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -20,6 +21,8 @@ export class SignUpComponent implements OnInit {
         Validators.minLength(6),
         Validators.maxLength(20),
         Validators.pattern(/^[0-9a-zA-Z]+$/)
+      ], [
+        UsernameValidator.shouldBeUnique
       ]),
       password: new FormControl('', [
         Validators.required,
@@ -30,7 +33,7 @@ export class SignUpComponent implements OnInit {
         Validators.required
       ])
     }, {
-      validators: PasswordValidator.passwordCheck('password', 'confirmpassword')
+      validators: [PasswordValidator.passwordCheck('password', 'confirmpassword')]
     });
     console.log(this.signUp);
     this.passWord.valueChanges.subscribe(passwordVal => {
