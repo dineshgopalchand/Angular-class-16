@@ -46,6 +46,13 @@ export class SignUpComponent implements OnInit {
   }
   signupSubmit() {
     console.log(this.signUp.value);
+    this.signUp.reset(); // to reset the previous value
+    this.signUp.setErrors({ // to set the custom error
+      shouldBeUnique: true,
+      networkissue: true
+    });
+    // this.signUp.get('username').setErrors({});
+    // this.userName.setErrors({});
   }
   get userName() {
     return this.signUp.get('username');
