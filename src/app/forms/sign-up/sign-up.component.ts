@@ -31,7 +31,11 @@ export class SignUpComponent implements OnInit {
       ]),
       confirmpassword: new FormControl('', [
         Validators.required
-      ])
+      ]),
+      nameField: new FormGroup({
+        firstname: new FormControl('', [Validators.required]),
+        lastname: new FormControl('', [Validators.required])
+      })
     }, {
       validators: [PasswordValidator.passwordCheck('password', 'confirmpassword')]
     });
@@ -56,6 +60,9 @@ export class SignUpComponent implements OnInit {
   }
   get userName() {
     return this.signUp.get('username');
+  }
+  get firstName() {
+    return this.signUp.get('nameField.firstname');
   }
   get passWord() {
     return this.signUp.get('password');

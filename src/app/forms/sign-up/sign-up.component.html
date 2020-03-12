@@ -12,6 +12,15 @@
             <div *ngIf="userName.errors.pattern">Invalid username</div>
             <div *ngIf="userName.errors.shouldBeUnique">Username is already taken by others</div>
         </div>
+        <div formGroupName="nameField" [ngStyle]="{'border':signUp.get('nameField').invalid?'1px solid red':''}">
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="firstname" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" formControlName="lastname" placeholder="Last Name">
+            </div>
+        </div>
+
         <div class="form-group">
             <input type="password" class="form-control" formControlName="password" placeholder="Password">
         </div>
@@ -22,6 +31,7 @@
         <div class="form-group">
             <input type="password" class="form-control" formControlName="confirmpassword" placeholder="Confirm Password">
         </div>
+
         <div>
             <button class="btn btn-primary form-control" [disabled]="signUp.invalid || signUp.pending">Sign-up</button>
         </div>
@@ -39,6 +49,9 @@
 <div>
     {{passWord.errors|json}}
 </div>
+<div>
+    {{'------------'+signUp.get('nameField').valid|json}}
+</div>
 
 <!-- <div>
     {{passWord.errors|json}}
@@ -46,3 +59,9 @@
 <div>
     confirmPassword {{confirmPassword.errors|json}}
 </div> -->
+<div>
+    {{signUp.value | json}}
+</div>
+<div>
+    {{firstName.value | json}}
+</div>
