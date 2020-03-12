@@ -23,6 +23,7 @@ import { NameValidationDirective } from './common/directive/name-validation.dire
 import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custom-directive.component';
 import { ContactFormComponent } from './forms/contact-form/contact-form.component';
 import { SignUpComponent } from './forms/sign-up/sign-up.component';
+import { ToDoListComponent } from './forms/to-do-list/to-do-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { SignUpComponent } from './forms/sign-up/sign-up.component';
     NameValidationDirective,
     ShowCustomDirectiveComponent,
     ContactFormComponent,
-    SignUpComponent
+    SignUpComponent,
+    ToDoListComponent
   ],
   imports: [
     BrowserModule,
