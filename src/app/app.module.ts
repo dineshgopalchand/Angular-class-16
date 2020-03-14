@@ -24,6 +24,7 @@ import { ShowCustomDirectiveComponent } from './show-custom-directive/show-custo
 import { ContactFormComponent } from './forms/contact-form/contact-form.component';
 import { SignUpComponent } from './forms/sign-up/sign-up.component';
 import { ToDoListComponent } from './forms/to-do-list/to-do-list.component';
+import { ContactComponent } from './forms/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ToDoListComponent } from './forms/to-do-list/to-do-list.component';
     ShowCustomDirectiveComponent,
     ContactFormComponent,
     SignUpComponent,
-    ToDoListComponent
+    ToDoListComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
