@@ -1,3 +1,20 @@
 <div class="form-group">
-    <input type="text" class="form-control" name="newtopic" placeholder="Enter new Topic" #newtopic (keyup.enter)="addTopic(newtopic)">
+    <!-- <input type="text" class="form-control"  name="newtopic" placeholder="Enter new Topic" #newtopic (keyup.enter)="addTopic(newtopic)"> -->
+    <input type="text" class="form-control" [formControl]="topicField" name="newtopic" placeholder="Enter new Topic" (keyup.enter)="addTopic()">
 </div>
+<div class="topic-list-block">
+    <h3>Topics</h3>
+    <ul class="list-group" *ngIf="topicLists.length!=0">
+        <li class="list-group-item" *ngFor="let item of topicLists;index as i;odd as o;" [ngClass]="{'list-group-item-secondary': o}">
+            <span class="count-number">{{i+1}}.</span>
+
+            <button class="btn btn-danger" (click)="removeTopic(item)">Remove</button>
+            <span class="topic-name">{{item}}</span>
+        </li>
+
+        <!-- <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li> -->
+    </ul>
+    <div *ngIf="topicLists.length==0">No Topic Added</div>
+</div>
+
+<!-- {{topicLists|json}} -->
