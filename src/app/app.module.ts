@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PipesComponent } from './pipes/pipes.component';
 import { KeyValuePipe, UpperCasePipe, LowerCasePipe, TitleCasePipe } from '@angular/common';
 import { CarouselComponent } from './carousel/carousel.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TextFormatingPipe } from './common/pipes/text-formating.pipe';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -25,7 +25,8 @@ import { ContactFormComponent } from './forms/contact-form/contact-form.componen
 import { SignUpComponent } from './forms/sign-up/sign-up.component';
 import { ToDoListComponent } from './forms/to-do-list/to-do-list.component';
 import { ContactComponent } from './forms/contact/contact.component';
-
+import { PostComponent } from './post/post.component';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,14 +47,16 @@ import { ContactComponent } from './forms/contact/contact.component';
     ContactFormComponent,
     SignUpComponent,
     ToDoListComponent,
-    ContactComponent
+    ContactComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [
     CourseService,
