@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { PostService, Post } from '../services/post.service';
+import { Post, PostService } from '../services/post.service';
 
 @Component({
   selector: 'app-post',
@@ -27,7 +26,7 @@ export class PostComponent implements OnInit {
     this.postService.create(newPost)
       .subscribe(res => {
         // console.log(res as Post);
-        this.postList.splice(0, 1, (res as Post));
+        this.postList.splice(0, 0, (res as Post));
         postForm.resetForm();
       });
   }
@@ -37,6 +36,27 @@ export class PostComponent implements OnInit {
       .subscribe(data => {
         // console.log((data as Post[])[0].title);
         this.postList = data as Post[];
+      }, error => {
+        console.log(error);
+      });
+  }
+  deletePost(post) {
+    this.postService.delete(post)
+      .subscribe(res => {
+        const indexVal = this.postList.indexOf(post);
+        this.postList.splice(indexVal, 1);
+      });
+  }
+  updatePost(post: Post) {
+    const newPost = post;
+    const indexVal = this.postList.indexOf(post);
+    newPost.title += '--';
+    delete newPost.body;
+
+    this.postService.update(newPost)
+      .subscribe(updatedPost => {
+        console.log(updatedPost);
+        this.postList.splice(indexVal, 1, (updatedPost as Post));
       });
   }
 

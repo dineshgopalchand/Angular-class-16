@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostService {
-  url = 'http://localhost:3016/posts/';
-  constructor(private http: HttpClient) { }
+export class PostService extends DataService {
 
-  getAll() {
-    // this.http.get<Post[]>('http://localhost:3016/posts/')
-    return this.http.get(this.url);
+  constructor(http: HttpClient) {
+    const url = 'http://localhost:3016/posts/';
+    super(http, url);
   }
-  create(post: Post) {
-    return this.http.post(this.url, post);
-  }
+
+
 }
 export interface Post {
   'userId': number;
