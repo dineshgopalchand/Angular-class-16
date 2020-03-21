@@ -27,6 +27,7 @@ import { ToDoListComponent } from './forms/to-do-list/to-do-list.component';
 import { ContactComponent } from './forms/contact/contact.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LifeCycleComponent } from './life-cycle/life-cycle.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,7 +49,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignUpComponent,
     ToDoListComponent,
     ContactComponent,
-    PostComponent
+    PostComponent,
+    LifeCycleComponent
   ],
   imports: [
     BrowserModule,

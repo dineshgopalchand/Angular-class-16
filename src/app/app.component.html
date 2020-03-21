@@ -30,7 +30,10 @@
         <!-- <app-sign-up></app-sign-up> -->
         <!-- <app-to-do-list></app-to-do-list> -->
         <!-- <app-contact></app-contact> -->
-        <app-post></app-post>
+        <button class="btn btn-secondary" (click)="switchComponent=!switchComponent">Switch</button>
+        <app-life-cycle *ngIf="switchComponent" [dateval]="dateVal"></app-life-cycle>
+        <app-post *ngIf="!switchComponent"></app-post>
+        <!-- <app-post></app-post> -->
 
     </ng-container>
 </theme-basic>
