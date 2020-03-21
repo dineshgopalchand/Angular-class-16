@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   title = 'ngClass16';
-  switchComponent = true;
-  dateVal: Date = new Date();
+  // switchComponent = true;
+  // dateVal: Date = new Date();
   // showMessage = false;
   ngOnInit(): void {
-    setInterval(() => {
-      this.dateVal = new Date();
-    }, 3000);
+    // setInterval(() => {
+    //   this.dateVal = new Date();
+    // }, 3000);
   }
 }

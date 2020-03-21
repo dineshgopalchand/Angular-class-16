@@ -12,7 +12,6 @@ export class PostService extends DataService {
     super(http, url);
   }
 
-
 }
 export interface Post {
   'userId': number;

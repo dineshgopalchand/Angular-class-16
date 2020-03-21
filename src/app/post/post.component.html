@@ -11,7 +11,7 @@
 
 <div class="topic-list-block">
     <h3>Posts</h3>
-
+    <div class="alert alert-danger" *ngIf="errorMessage!=''">{{errorMessage}}</div>
     <div class="card" *ngFor="let post of postList;index as i">
         <div class="card-body">
             <h5 class="card-title">{{i+1}}. {{post.title}}</h5>

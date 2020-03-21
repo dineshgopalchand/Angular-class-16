@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Post, PostService } from '../services/post.service';
+import { NotFoundErrors } from '../common/errors/not-found-error';
 
 @Component({
   selector: 'app-post',
@@ -10,6 +11,7 @@ import { Post, PostService } from '../services/post.service';
 export class PostComponent implements OnInit {
 
   postList: Post[] = [];
+  errorMessage = '';
   constructor(private postService: PostService) { }
 
   ngOnInit() {
@@ -28,17 +30,38 @@ export class PostComponent implements OnInit {
         // console.log(res as Post);
         this.postList.splice(0, 0, (res as Post));
         postForm.resetForm();
+      },error=>{
+        // show  error to user
       });
   }
 
   getPost() {
+    //
+    // this.postService.getAll().toPromise().then(res=>{
+    //   // console.log(res);
+    //   this.postList = res as Post[];
+    // })
     this.postService.getAll()
       .subscribe(data => {
         // console.log((data as Post[])[0].title);
         this.postList = data as Post[];
-      }, error => {
+        console.log('subscription done');
+      }, (error) => {
         console.log(error);
-      });
+        // if(error.status===404){
+        //   alert('requested API link is not available')
+        // }else{
+        //   alert('some unexpected errors');
+        // }
+        if (error instanceof NotFoundErrors) {
+          this.errorMessage = 'unable to connect the API';
+        }
+
+      },
+        () => {
+          console.log('completed');
+        }
+      );
   }
   deletePost(post) {
     this.postService.delete(post)
@@ -51,7 +74,7 @@ export class PostComponent implements OnInit {
     const newPost = post;
     const indexVal = this.postList.indexOf(post);
     newPost.title += '--';
-    delete newPost.body;
+    // delete newPost.body;
 
     this.postService.update(newPost)
       .subscribe(updatedPost => {
