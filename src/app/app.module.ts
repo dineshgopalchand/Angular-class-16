@@ -28,6 +28,8 @@ import { ContactComponent } from './forms/contact/contact.component';
 import { PostComponent } from './post/post.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LifeCycleComponent } from './life-cycle/life-cycle.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +52,9 @@ import { LifeCycleComponent } from './life-cycle/life-cycle.component';
     ToDoListComponent,
     ContactComponent,
     PostComponent,
-    LifeCycleComponent
+    LifeCycleComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

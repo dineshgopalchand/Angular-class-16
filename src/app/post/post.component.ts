@@ -30,8 +30,10 @@ export class PostComponent implements OnInit {
         // console.log(res as Post);
         this.postList.splice(0, 0, (res as Post));
         postForm.resetForm();
-      },error=>{
+      }, error => {
         // show  error to user
+      }, () => {
+        // add some action on completion
       });
   }
 
