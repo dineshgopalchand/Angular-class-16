@@ -1,0 +1,23 @@
+<div class="form-group">
+    <input type="text" class="form-control" [value]="gitFollowersService.username" #newUsername placeholder="Enter Username" (keyup.enter)="updateUsername($event.target.value)">
+</div>
+<hr>
+<div class="followers-block">
+    <div class="row" *ngIf="followersList.length>0">
+        <div class="col-3" *ngFor="let follower of followersList">
+            <div class="card">
+                <img class="card-img-top" [src]="follower.avatar_url" alt="Card image cap">
+                <div class="card-body">
+                    <h3 class="card-text">
+                        {{follower.login}}
+                    </h3>
+                    <a class="card-link btn btn-link" (click)="updateUsername(follower.login)">Follower Link</a>
+                    <a class="card-link btn btn-link ">Another link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="followersList.length==0">
+        <h4>Followers list not available for {{gitFollowersService.username}}</h4>
+    </div>
+</div>

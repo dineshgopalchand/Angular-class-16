@@ -29,6 +29,10 @@ const routes: Routes = [
     component: ProductListComponent
   },
   {
+    path: 'git',
+    loadChildren: () => import('./git/git.module').then(m => m.GitModule)
+  },
+  {
     path: '**',
     component: NotFoundComponent
   },
