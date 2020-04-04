@@ -23,7 +23,7 @@ import { CartService } from '../shopping/cart.service';
 export class ProductListComponent implements OnInit {
   products: ProductDetails[] = [];
 
-  constructor(private productService: ProductService, private cartService: CartService) { }
+  constructor(public productService: ProductService, public cartService: CartService) { }
 
   ngOnInit() {
     this.products = this.productService.products;

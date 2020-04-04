@@ -9,6 +9,7 @@ import { GitFollowersService, GitFollowers } from '../services/git-followers.ser
 export class GitFollowersComponent implements OnInit {
   @ViewChild('newUsername', { static: true }) newusername: ElementRef;
   followersList: GitFollowers[] = [];
+  errors = '';
 
   constructor(public gitFollowersService: GitFollowersService) { }
 
@@ -24,8 +25,11 @@ export class GitFollowersComponent implements OnInit {
   getFollowerList() {
     this.gitFollowersService.getAll().toPromise()
       .then(res => {
+        this.errors = '';
         this.followersList = res as GitFollowers[];
-      }).catch(err => {
+      })
+      .catch(err => {
+        this.errors = 'some error';
         this.followersList = [] as GitFollowers[];
       });
   }
