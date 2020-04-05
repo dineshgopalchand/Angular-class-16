@@ -8,7 +8,7 @@ export class GitFollowersService extends DataService {
   constructor(http: HttpClient) {
     const url = 'https://api.github.com/users/dineshgopalchand/followers';
     super(http, url);
-    this.userName = 'dineshgopalchand';
+    // this.userName = 'dineshgopalchand';
   }
   set username(user: string) {
     this.userName = user;

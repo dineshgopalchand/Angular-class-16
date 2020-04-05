@@ -11,6 +11,14 @@ const routes: Routes = [
     {
         path: 'followers',
         component: GitFollowersComponent
+    },
+    {
+        path: 'followers/:username',
+        component: GitFollowersComponent
+    },
+    {
+        path: 'followers/:username/:userid',
+        component: GitFollowersComponent
     }
 ];
 @NgModule({

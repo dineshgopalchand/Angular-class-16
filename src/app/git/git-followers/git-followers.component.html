@@ -1,8 +1,14 @@
 <div class="form-group">
-    <input type="text" class="form-control" [value]="gitFollowersService.username" #newUsername placeholder="Enter Username" (keyup.enter)="updateUsername($event.target.value)">
+    <input type="text" class="form-control" [value]="gitFollowersService.username" #newUsername placeholder="Enter Username" (keyup.enter)="userSearch($event.target.value)">
 </div>
 <hr>
 <div class="followers-block">
+    <div class="pagination mb-1">
+        <button class="btn btn-primary mr-2">Previous</button>
+        <button class="btn btn-primary mr-2" [routerLink]="['/git','followers',gitFollowersService.username]" [queryParams]="{q:'something',page:1,noperpage:10}">1</button>
+        <button class="btn btn-primary mr-2" [routerLink]="['/git','followers',gitFollowersService.username]" [queryParams]="{q:'something',page:2,noperpage:10}">2</button>
+        <button class="btn btn-primary mr-2">Next</button>
+    </div>
     <div class="row" *ngIf="followersList.length>0">
         <div class="col-3" *ngFor="let follower of followersList">
             <div class="card">
@@ -11,7 +17,8 @@
                     <h3 class="card-text">
                         {{follower.login}}
                     </h3>
-                    <a class="btn btn-primary" (click)="updateUsername(follower.login)">Follower Link</a>
+                    <!-- <a class="btn btn-primary" (click)="updateUsername(follower.login)">Follower Link</a> -->
+                    <a class="btn btn-primary" [routerLink]="['/git','followers',follower.login,follower.id]" [queryParams]="{q:'something',page:1,noperpage:10}">Follower Link</a>
                 </div>
             </div>
         </div>

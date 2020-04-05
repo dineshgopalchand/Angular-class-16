@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GitFollowersService, GitFollowers } from '../services/git-followers.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-git-followers',
@@ -10,17 +11,41 @@ export class GitFollowersComponent implements OnInit {
   @ViewChild('newUsername', { static: true }) newusername: ElementRef;
   followersList: GitFollowers[] = [];
   errors = '';
+  defaultUserName = 'dineshgopalchand';
 
-  constructor(public gitFollowersService: GitFollowersService) { }
+  constructor(
+    public gitFollowersService: GitFollowersService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) { }
 
   ngOnInit() {
-    this.getFollowerList();
+    this.route.paramMap
+      .subscribe(params => {
+        console.log(params);
+        const username = params.get('username');
+        if (!username) {
+          this.userSearch(this.defaultUserName);
+        }
+        const userid = params.get('userid');
+        this.updateUsername(username);
+      });
+    this.route.queryParamMap
+      .subscribe(queryParams => {
+        console.log(queryParams);
+        const pageno = queryParams.get('page');
+        const noperpage = queryParams.get('noperpage');
+      });
+    // this.getFollowerList();
   }
   updateUsername(value: string) {
     // console.log(this.newusername);
     // this.gitFollowersService.username = (this.newusername.nativeElement as HTMLInputElement).value;
     this.gitFollowersService.username = value;
     this.getFollowerList();
+  }
+  userSearch(value: string) {
+    this.router.navigate(['/git', 'followers', value]);
   }
   getFollowerList() {
     this.gitFollowersService.getAll().toPromise()
