@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GitFollowersService, GitFollowers } from '../services/git-followers.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-git-followers',
@@ -20,21 +21,37 @@ export class GitFollowersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.paramMap
+    // this.route.paramMap
+    //   .subscribe(params => {
+    //     console.log(params);
+    //     const username = params.get('username');
+    //     if (!username) {
+    //       this.userSearch(this.defaultUserName);
+    //     }
+    //     const userid = params.get('userid');
+    //     this.updateUsername(username);
+    //   });
+    // this.route.queryParamMap
+    //   .subscribe(queryParams => {
+    //     console.log(queryParams);
+    //     const pageno = queryParams.get('page');
+    //     const noperpage = queryParams.get('noperpage');
+    //   });
+
+    combineLatest(
+      this.route.paramMap,
+      this.route.queryParamMap
+    )
       .subscribe(params => {
-        console.log(params);
-        const username = params.get('username');
+        // console.log(params);
+        const username = params[0].get('username');
         if (!username) {
           this.userSearch(this.defaultUserName);
         }
-        const userid = params.get('userid');
+        const userid = params[0].get('userid');
+        const pageno = params[1].get('page');
+        const noperpage = params[1].get('noperpage');
         this.updateUsername(username);
-      });
-    this.route.queryParamMap
-      .subscribe(queryParams => {
-        console.log(queryParams);
-        const pageno = queryParams.get('page');
-        const noperpage = queryParams.get('noperpage');
       });
     // this.getFollowerList();
   }
