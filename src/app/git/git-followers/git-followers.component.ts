@@ -22,6 +22,10 @@ export class GitFollowersComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // example of snapshot
+    const username = this.route.snapshot.paramMap.get('username');
+    console.log(username);
     // this.route.paramMap
     //   .subscribe(params => {
     //     console.log(params);
@@ -53,14 +57,14 @@ export class GitFollowersComponent implements OnInit {
         const noperpage = params[1].get('noperpage');
         return Observable.create(observer => {
           observer.next(username);
-          console.log({username});
+          console.log({ username });
           observer.complete();
         });
       })
     )
-    .subscribe(username => {
-      this.updateUsername(username as string);
-    });
+      .subscribe(username => {
+        this.updateUsername(username as string);
+      });
     // this.getFollowerList();
   }
   updateUsername(value: string) {
