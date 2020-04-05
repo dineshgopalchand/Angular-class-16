@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GitFollowersService, GitFollowers } from '../services/git-followers.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { combineLatest } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-git-followers',
@@ -41,9 +42,8 @@ export class GitFollowersComponent implements OnInit {
     combineLatest(
       this.route.paramMap,
       this.route.queryParamMap
-    )
-      .subscribe(params => {
-        // console.log(params);
+    ).pipe(
+      switchMap(params => {
         const username = params[0].get('username');
         if (!username) {
           this.userSearch(this.defaultUserName);
@@ -51,8 +51,16 @@ export class GitFollowersComponent implements OnInit {
         const userid = params[0].get('userid');
         const pageno = params[1].get('page');
         const noperpage = params[1].get('noperpage');
-        this.updateUsername(username);
-      });
+        return Observable.create(observer => {
+          observer.next(username);
+          console.log({username});
+          observer.complete();
+        });
+      })
+    )
+    .subscribe(username => {
+      this.updateUsername(username as string);
+    });
     // this.getFollowerList();
   }
   updateUsername(value: string) {
