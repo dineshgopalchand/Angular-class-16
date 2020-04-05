@@ -24,8 +24,8 @@ export class GitFollowersComponent implements OnInit {
   ngOnInit() {
 
     // example of snapshot
-    const username = this.route.snapshot.paramMap.get('username');
-    console.log(username);
+    const usernameSnap = this.route.snapshot.paramMap.get('username');
+    console.log(usernameSnap);
     // this.route.paramMap
     //   .subscribe(params => {
     //     console.log(params);
